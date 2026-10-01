@@ -1,0 +1,239 @@
+{
+  "schema": "hathq://hat/package/v2",
+  "package_id": "hat/digital-twin-coordinator",
+  "repository_id": "hat-digital-twin-coordinator",
+  "version": "1.0.2",
+  "specification_version": "1.0.0",
+  "manifest": {
+    "schema": "hathq://hat/manifest/v1",
+    "id": "hat/digital-twin-coordinator",
+    "name": "Digital Twin Coordinator",
+    "version": "1.0.2",
+    "capabilities": [
+      "composition-review",
+      "priority-review",
+      "information-link-check"
+    ],
+    "decision_boundaries": [
+      "propose-composition",
+      "propose-priority"
+    ],
+    "input_classifications": [
+      "internal"
+    ],
+    "output_classification": "internal",
+    "permissions": [
+      {
+        "resource": "hat-composition-metadata",
+        "operations": [
+          "inspect-metadata",
+          "propose-recommendation"
+        ],
+        "mode": "propose"
+      }
+    ]
+  },
+  "operations": [
+    {
+      "id": "hathq://vocabulary/action/review-hat-composition/v1",
+      "input_schema": "hathq://hat-digital-twin-coordinator/review-composition-input/v1",
+      "output_schema": "hathq://hat-digital-twin-coordinator/review-composition-output/v1",
+      "context_plan": {
+        "id": "review-composition-context",
+        "selectors": [
+          {
+            "namespace": "hat-composition",
+            "projection_schema": "hathq://hat-digital-twin-coordinator/composition-input/v1",
+            "required": true
+          }
+        ],
+        "unresolved_policy": "record-unresolved"
+      },
+      "reducer": {
+        "id": "review-composition-reducer",
+        "strategy": "typed-domain-event",
+        "event_schema": "hathq://hat-digital-twin-coordinator/composition-event/v1",
+        "projection_schema": "hathq://hat-digital-twin-coordinator/composition/v1",
+        "conflict_policy": "reject"
+      },
+      "procedure": {
+        "id": "review-composition-procedure",
+        "steps": [
+          {
+            "action_id": "hathq://vocabulary/action/review-hat-composition/v1",
+            "input_schema": "hathq://hat-digital-twin-coordinator/review-composition-input/v1",
+            "output_schema": "hathq://hat-digital-twin-coordinator/review-composition-output/v1"
+          }
+        ]
+      },
+      "handler": {
+        "kind": "declarative-hat",
+        "reference": "review-composition-procedure"
+      }
+    },
+    {
+      "id": "hathq://vocabulary/action/verify-information-link/v1",
+      "input_schema": "hathq://hat-digital-twin-coordinator/information-link-check-input/v1",
+      "output_schema": "hathq://hat/situation-contribution/v1",
+      "context_plan": {
+        "id": "information-link-check-context",
+        "selectors": [
+          {
+            "namespace": "runtime-status",
+            "projection_schema": "hathq://hatter/runtime-status/v1",
+            "required": true
+          }
+        ],
+        "unresolved_policy": "record-unresolved"
+      },
+      "reducer": {
+        "id": "information-link-check-reducer",
+        "strategy": "typed-domain-event",
+        "event_schema": "hathq://hat-digital-twin-coordinator/information-link-check-event/v1",
+        "projection_schema": "hathq://hat/situation-contribution/v1",
+        "conflict_policy": "reject"
+      },
+      "procedure": {
+        "id": "information-link-check-procedure",
+        "steps": [
+          {
+            "action_id": "hathq://vocabulary/action/verify-information-link/v1",
+            "input_schema": "hathq://hat-digital-twin-coordinator/information-link-check-input/v1",
+            "output_schema": "hathq://hat/situation-contribution/v1"
+          }
+        ]
+      },
+      "handler": {
+        "kind": "hat-service",
+        "reference": "digital-twin-coordinator-worker"
+      }
+    }
+  ],
+  "catalog": {
+    "schema": "hathq://hat/semantic-catalog/v1",
+    "identity": {
+      "catalog_id": "hat-digital-twin-coordinator",
+      "version": 1,
+      "digest_sha256": "887c9dcf830117d6b64f05d126656bfced7b43aa46cdf98ec79613b4f7a44f83"
+    },
+    "owner_repository_id": "hat-digital-twin-coordinator",
+    "foundation": false,
+    "dependencies": [
+      {
+        "catalog_id": "hathq.foundation",
+        "version": 1,
+        "digest_sha256": "6b618dff030e551bafd6b1a70fe6daf71e2873de9c2230f4cf71e9ac9fbf2c0f"
+      }
+    ],
+    "incompatibilities": [],
+    "terms": [
+      {
+        "reference": {
+          "catalog_id": "hat-digital-twin-coordinator",
+          "catalog_digest_sha256": "887c9dcf830117d6b64f05d126656bfced7b43aa46cdf98ec79613b4f7a44f83",
+          "term_id": "hathq://vocabulary/entity/hat-composition/v1",
+          "version": 1,
+          "definition_digest_sha256": "a5c7f5d2c39f1aaaf2f7abc7ea6563557a38ea3f254ec0c39ca905cb94c42a33",
+          "kind": "entity-type"
+        },
+        "wire_schema": "hathq://hat-digital-twin-coordinator/composition/v1",
+        "semantic_icon": "hat",
+        "dependencies": [],
+        "is_a": [],
+        "domain": [],
+        "range": []
+      },
+      {
+        "reference": {
+          "catalog_id": "hat-digital-twin-coordinator",
+          "catalog_digest_sha256": "887c9dcf830117d6b64f05d126656bfced7b43aa46cdf98ec79613b4f7a44f83",
+          "term_id": "hathq://vocabulary/action/review-hat-composition/v1",
+          "version": 1,
+          "definition_digest_sha256": "f0067fcaad0ef59cc951f275eed5254888e2f5c1769eaae03e0d62e6baa514cf",
+          "kind": "action"
+        },
+        "wire_schema": "hathq://hat-digital-twin-coordinator/review-composition-input/v1",
+        "semantic_icon": "action",
+        "dependencies": [],
+        "is_a": [],
+        "domain": [],
+        "range": []
+      },
+      {
+        "reference": {
+          "catalog_id": "hat-digital-twin-coordinator",
+          "catalog_digest_sha256": "887c9dcf830117d6b64f05d126656bfced7b43aa46cdf98ec79613b4f7a44f83",
+          "term_id": "hathq://vocabulary/action/verify-information-link/v1",
+          "version": 1,
+          "definition_digest_sha256": "b254bc5492d2c336c6979ccd0fd80f2548f2f0e468f2f61f66e1e4c680a49650",
+          "kind": "action"
+        },
+        "wire_schema": "hathq://hat-digital-twin-coordinator/information-link-check-input/v1",
+        "semantic_icon": "relation",
+        "dependencies": [],
+        "is_a": [],
+        "domain": [],
+        "range": []
+      }
+    ],
+    "lexicalizations": [],
+    "frames": [
+      {
+        "frame_id": "review-composition-procedure-frame",
+        "definition_digest_sha256": "0876ced826b3a64132685748984cfb482e01f4b448e7516f869679170cf56c77",
+        "predicate": {
+          "catalog_id": "hat-digital-twin-coordinator",
+          "catalog_digest_sha256": "887c9dcf830117d6b64f05d126656bfced7b43aa46cdf98ec79613b4f7a44f83",
+          "term_id": "hathq://vocabulary/action/review-hat-composition/v1",
+          "version": 1,
+          "definition_digest_sha256": "f0067fcaad0ef59cc951f275eed5254888e2f5c1769eaae03e0d62e6baa514cf",
+          "kind": "action"
+        },
+        "roles": [
+          {
+            "role": "actor",
+            "required": true,
+            "accepted_kinds": [
+              "entity-type"
+            ]
+          },
+          {
+            "role": "object",
+            "required": true,
+            "accepted_kinds": [
+              "concept"
+            ]
+          }
+        ]
+      },
+      {
+        "frame_id": "information-link-check-procedure-frame",
+        "definition_digest_sha256": "df817e3ef6d38ca791e00fd39a71f92efca16408a0cba0010046078855d9e79b",
+        "predicate": {
+          "catalog_id": "hat-digital-twin-coordinator",
+          "catalog_digest_sha256": "887c9dcf830117d6b64f05d126656bfced7b43aa46cdf98ec79613b4f7a44f83",
+          "term_id": "hathq://vocabulary/action/verify-information-link/v1",
+          "version": 1,
+          "definition_digest_sha256": "b254bc5492d2c336c6979ccd0fd80f2548f2f0e468f2f61f66e1e4c680a49650",
+          "kind": "action"
+        },
+        "roles": [
+          {
+            "role": "actor",
+            "required": true,
+            "accepted_kinds": [
+              "entity-type"
+            ]
+          },
+          {
+            "role": "object",
+            "required": true,
+            "accepted_kinds": [
+              "concept"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

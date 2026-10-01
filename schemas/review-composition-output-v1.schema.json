@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "hathq://hat-digital-twin-coordinator/review-composition-output/v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "scope_ref", "revision", "members", "ordered_active_repository_ids", "unresolved_dependencies", "cycle_detected"],
+  "properties": {
+    "schema": {"const": "hathq://hat-digital-twin-coordinator/review-composition-output/v1"},
+    "scope_ref": {"type": "string", "minLength": 1, "maxLength": 96},
+    "revision": {"type": "integer", "minimum": 1},
+    "members": {
+      "type": "array", "minItems": 1, "maxItems": 256,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["repository_id", "binding_revision", "active", "dependencies"],
+        "properties": {
+          "repository_id": {"type": "string", "minLength": 1, "maxLength": 96},
+          "binding_revision": {"type": "integer", "minimum": 1},
+          "active": {"type": "boolean"},
+          "dependencies": {
+            "type": "array", "maxItems": 64, "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1, "maxLength": 96}
+          }
+        }
+      }
+    },
+    "ordered_active_repository_ids": {
+      "type": "array", "maxItems": 256, "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1, "maxLength": 96}
+    },
+    "unresolved_dependencies": {
+      "type": "array", "maxItems": 16384,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["repository_id", "dependency_repository_id"],
+        "properties": {
+          "repository_id": {"type": "string", "minLength": 1, "maxLength": 96},
+          "dependency_repository_id": {"type": "string", "minLength": 1, "maxLength": 96}
+        }
+      }
+    },
+    "cycle_detected": {"type": "boolean"}
+  }
+}
