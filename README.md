@@ -30,3 +30,11 @@ cargo test --locked
 [OSS responsibility and source completion](docs/oss-source-contract.md) defines the supported package boundary and required acceptance. It does not declare unexecuted source, distribution or production checks complete.
 
 Dependency updates: [repository policy](docs/dependency-updates.md).
+
+## Operational catalog source contract
+
+The current source package has no linguistic clause frames. Its catalog and
+foundation dependency digests follow the declared HatSpec source dependency.
+This source change does not replace previously signed release bytes. A new
+immutable release identity and consumer acceptance are required before distributing
+the changed package; language meaning/adoption remains with sem-lang.

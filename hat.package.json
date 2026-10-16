@@ -114,7 +114,7 @@
     "identity": {
       "catalog_id": "hat-digital-twin-coordinator",
       "version": 1,
-      "digest_sha256": "887c9dcf830117d6b64f05d126656bfced7b43aa46cdf98ec79613b4f7a44f83"
+      "digest_sha256": "de51b8eb1122aa22da1ee688cc4b35d290cbb64394d73570a287028ab1f97dc9"
     },
     "owner_repository_id": "hat-digital-twin-coordinator",
     "foundation": false,
@@ -122,7 +122,7 @@
       {
         "catalog_id": "hathq.foundation",
         "version": 1,
-        "digest_sha256": "6b618dff030e551bafd6b1a70fe6daf71e2873de9c2230f4cf71e9ac9fbf2c0f"
+        "digest_sha256": "7ed387a86fe00a320784c181a2128da856ccb3e5e3930040ca39d9f5b627a465"
       }
     ],
     "incompatibilities": [],
@@ -130,7 +130,7 @@
       {
         "reference": {
           "catalog_id": "hat-digital-twin-coordinator",
-          "catalog_digest_sha256": "887c9dcf830117d6b64f05d126656bfced7b43aa46cdf98ec79613b4f7a44f83",
+          "catalog_digest_sha256": "de51b8eb1122aa22da1ee688cc4b35d290cbb64394d73570a287028ab1f97dc9",
           "term_id": "hathq://vocabulary/entity/hat-composition/v1",
           "version": 1,
           "definition_digest_sha256": "a5c7f5d2c39f1aaaf2f7abc7ea6563557a38ea3f254ec0c39ca905cb94c42a33",
@@ -146,7 +146,7 @@
       {
         "reference": {
           "catalog_id": "hat-digital-twin-coordinator",
-          "catalog_digest_sha256": "887c9dcf830117d6b64f05d126656bfced7b43aa46cdf98ec79613b4f7a44f83",
+          "catalog_digest_sha256": "de51b8eb1122aa22da1ee688cc4b35d290cbb64394d73570a287028ab1f97dc9",
           "term_id": "hathq://vocabulary/action/review-hat-composition/v1",
           "version": 1,
           "definition_digest_sha256": "f0067fcaad0ef59cc951f275eed5254888e2f5c1769eaae03e0d62e6baa514cf",
@@ -162,7 +162,7 @@
       {
         "reference": {
           "catalog_id": "hat-digital-twin-coordinator",
-          "catalog_digest_sha256": "887c9dcf830117d6b64f05d126656bfced7b43aa46cdf98ec79613b4f7a44f83",
+          "catalog_digest_sha256": "de51b8eb1122aa22da1ee688cc4b35d290cbb64394d73570a287028ab1f97dc9",
           "term_id": "hathq://vocabulary/action/verify-information-link/v1",
           "version": 1,
           "definition_digest_sha256": "b254bc5492d2c336c6979ccd0fd80f2548f2f0e468f2f61f66e1e4c680a49650",
@@ -176,64 +176,6 @@
         "range": []
       }
     ],
-    "lexicalizations": [],
-    "frames": [
-      {
-        "frame_id": "review-composition-procedure-frame",
-        "definition_digest_sha256": "0876ced826b3a64132685748984cfb482e01f4b448e7516f869679170cf56c77",
-        "predicate": {
-          "catalog_id": "hat-digital-twin-coordinator",
-          "catalog_digest_sha256": "887c9dcf830117d6b64f05d126656bfced7b43aa46cdf98ec79613b4f7a44f83",
-          "term_id": "hathq://vocabulary/action/review-hat-composition/v1",
-          "version": 1,
-          "definition_digest_sha256": "f0067fcaad0ef59cc951f275eed5254888e2f5c1769eaae03e0d62e6baa514cf",
-          "kind": "action"
-        },
-        "roles": [
-          {
-            "role": "actor",
-            "required": true,
-            "accepted_kinds": [
-              "entity-type"
-            ]
-          },
-          {
-            "role": "object",
-            "required": true,
-            "accepted_kinds": [
-              "concept"
-            ]
-          }
-        ]
-      },
-      {
-        "frame_id": "information-link-check-procedure-frame",
-        "definition_digest_sha256": "df817e3ef6d38ca791e00fd39a71f92efca16408a0cba0010046078855d9e79b",
-        "predicate": {
-          "catalog_id": "hat-digital-twin-coordinator",
-          "catalog_digest_sha256": "887c9dcf830117d6b64f05d126656bfced7b43aa46cdf98ec79613b4f7a44f83",
-          "term_id": "hathq://vocabulary/action/verify-information-link/v1",
-          "version": 1,
-          "definition_digest_sha256": "b254bc5492d2c336c6979ccd0fd80f2548f2f0e468f2f61f66e1e4c680a49650",
-          "kind": "action"
-        },
-        "roles": [
-          {
-            "role": "actor",
-            "required": true,
-            "accepted_kinds": [
-              "entity-type"
-            ]
-          },
-          {
-            "role": "object",
-            "required": true,
-            "accepted_kinds": [
-              "concept"
-            ]
-          }
-        ]
-      }
-    ]
+    "lexicalizations": []
   }
 }
